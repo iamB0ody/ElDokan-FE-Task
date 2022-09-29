@@ -1,1 +1,44 @@
-<p>input works!</p>
+<div [class]="containerclasses">
+  <!-- label -->
+  <label *ngIf="label" class="main-label" [for]="label + '-id'"
+    >{{ label }} <small>{{ hint }}</small></label
+  >
+  <!-- label -->
+  <ng-container *ngIf="!srOnly && type !== 'radio' && type !== 'checkbox'">
+    <input
+    [type]="type"
+    [placeholder]="placeholder"
+    [class]="classes"
+    [id]="label + '-id'"
+  />
+  </ng-container>
+
+  <!-- srOnly -->
+  <ng-container  *ngIf="srOnly">
+    <label class="sr-only" for="label + '-id'">{{ srOnly }}</label>
+    <div class="input-group mb-2">
+      <div class="input-group-prepend">
+        <div class="input-group-text">{{ srOnly }}</div>
+      </div>
+      <input
+        [type]="type"
+        [placeholder]="placeholder"
+        [class]="classes"
+        [id]="label + '-id'"
+      />
+    </div>
+  </ng-container>
+  <!-- srOnly -->
+  <!-- checkBox -->
+  <ng-container *ngIf="type === 'radio' || type === 'checkbox'">
+    <label class="input-checkbox" *ngFor="let option of options">
+      {{option}}
+      <input [type]="type" [name]="label">
+      <span class="checkmark"></span>
+    </label>
+  </ng-container>
+
+  <!-- checkBox -->
+  <ng-content></ng-content>
+
+</div>

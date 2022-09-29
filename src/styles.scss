@@ -4,22 +4,22 @@
 /* change the colors */
 $primary: #01E2D8;
 
+:root {
+  --main-color: #00BCB4;
+}
+
 @import "bootstrap";
 
+
+.margin-top-05 {
+  margin-top: 0.5rem;
+}
 
 
 body {
     padding-top: 90px;
     background-color: #F6F7FB;
     color: #3D3D3D;
-}
-
-input[type="checkbox"] {
-  accent-color: $primary;
-}
-
-input[type="radio"] {
-  accent-color: $primary;
 }
 
 .btn-primary {
