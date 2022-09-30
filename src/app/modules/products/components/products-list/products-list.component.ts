@@ -13,35 +13,18 @@ export class ProductsListComponent implements OnInit {
   tempProductsList!: Product[];
   selectedProduct!: Product;
 
-  constructor(private productsService: ProductsService, private router: Router) {}
+  constructor(
+    private productsService: ProductsService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
+    this.listenToProduct();
     this.getProducts();
   }
 
   getProducts() {
-    this.productsList = [
-      {
-        id: 1,
-        name: 'Product 1',
-      },
-      {
-        id: 2,
-        name: 'Product 2',
-      },
-      {
-        id: 3,
-        name: 'Product 3',
-      },
-      {
-        id: 4,
-        name: 'Product 4',
-      },
-      {
-        id: 5,
-        name: 'Product 5',
-      },
-    ];
+    this.productsList = this.productsService.productsList;
     this.productsService.setProducts(this.productsList);
     this.tempProductsList = this.productsList;
   }
@@ -52,12 +35,11 @@ export class ProductsListComponent implements OnInit {
 
   select(product: Product) {
     this.selectedProduct = product;
-    this.productsService.setProduct(this.selectedProduct);
-    this.router.navigate(['/products/edit/' + this.selectedProduct.id])
+    this.setProduct(product);
   }
 
-  add(){
-    this.router.navigate(['/products/add'])
+  add() {
+    this.router.navigate(['/products/add']);
   }
 
   filterList(value: string) {
@@ -69,5 +51,18 @@ export class ProductsListComponent implements OnInit {
     } else {
       this.productsList = this.tempProductsList;
     }
+  }
+
+  listenToProduct() {
+    this.productsService.getProduct().subscribe((p) => {
+      if (p) {
+        this.setProduct(p);
+      }
+    });
+  }
+
+  setProduct(p: Product) {
+    this.selectedProduct = p;
+    this.router.navigate(['/products/edit/' + p.id]);
   }
 }

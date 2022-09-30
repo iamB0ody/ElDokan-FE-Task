@@ -65,6 +65,7 @@ export class AddEditProductComponent implements OnInit {
       const p = products?.find((p) => p.id == productId);
       if (p) {
         this.setProduct(p);
+        this.productsService.setProduct(p);
       }
     });
   }
