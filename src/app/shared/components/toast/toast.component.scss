@@ -1,0 +1,23 @@
+ngb-toast {
+  position: fixed;
+  width: 350px;
+  z-index: 99999999999;
+  right: 10%;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px #00000029;
+  border: 1px solid #d6d6d6;
+  border-radius: 8px;
+  background-color: white !important;
+  overflow: hidden;
+  ::ng-deep .toast-header {
+    background-color: transparent;
+    border: 0 !important;
+    padding: 12px;
+    color: #212529;
+  }
+  ::ng-deep .toast-body {
+    color: #212529;
+    margin-bottom: 20px;
+    padding: 15px;
+  }
+}
