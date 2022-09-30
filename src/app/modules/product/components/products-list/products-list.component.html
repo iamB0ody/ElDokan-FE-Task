@@ -1,0 +1,41 @@
+<div ngbDropdown class="d-inline-block dropdownComponent">
+  <button
+    type="button"
+    class="btn btn-outline-primary"
+    id="dropdownBasic1"
+    ngbDropdownToggle
+  >
+    <ng-container *ngIf="!selectedProduct">
+      Select or add new product
+    </ng-container>
+    <ng-container *ngIf="selectedProduct">
+      <span class="selected-product">{{selectedProduct.name}}</span>
+    </ng-container>
+  </button>
+  <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+    <div class="col-sm-12">
+      <div class="form-group search-list">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search products"
+          (input)="search($event)"
+        />
+      </div>
+    </div>
+    <button ngbDropdownItem>
+      <img src="./../../../../../assets/icons/plus.svg" alt="" />
+      Add new product
+    </button>
+    <div class="dropdown-divider"></div>
+    <div class="list">
+      <button
+        ngbDropdownItem
+        *ngFor="let product of productsList"
+        (click)="select(product)"
+      >
+        {{ product.name }}
+      </button>
+    </div>
+  </div>
+</div>
