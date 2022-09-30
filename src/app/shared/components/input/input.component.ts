@@ -1,3 +1,4 @@
+import { FormControl } from '@angular/forms';
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
@@ -15,6 +16,7 @@ export class InputComponent implements OnInit {
   @Input() ids!: string;
   @Input() srOnly!: string;
   @Input() options!: string[];
+  @Input() fc!: FormControl;
 
   constructor() {}
 

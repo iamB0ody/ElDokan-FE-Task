@@ -1,5 +1,7 @@
+import { ProductsService } from './../../../../shared/services/products.service';
 import { Product } from '../../models/product.model';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-products-list',
@@ -11,7 +13,7 @@ export class ProductsListComponent implements OnInit {
   tempProductsList!: Product[];
   selectedProduct!: Product;
 
-  constructor() {}
+  constructor(private productsService: ProductsService, private router: Router) {}
 
   ngOnInit(): void {
     this.getProducts();
@@ -40,6 +42,7 @@ export class ProductsListComponent implements OnInit {
         name: 'Product 5',
       },
     ];
+    this.productsService.setProducts(this.productsList);
     this.tempProductsList = this.productsList;
   }
 
@@ -47,8 +50,14 @@ export class ProductsListComponent implements OnInit {
     this.filterList(e.target.value);
   }
 
-  select(product: Product){
+  select(product: Product) {
     this.selectedProduct = product;
+    this.productsService.setProduct(this.selectedProduct);
+    this.router.navigate(['/products/edit/' + this.selectedProduct.id])
+  }
+
+  add(){
+    this.router.navigate(['/products/add'])
   }
 
   filterList(value: string) {
