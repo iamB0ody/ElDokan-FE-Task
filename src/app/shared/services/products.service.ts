@@ -30,9 +30,9 @@ export class ProductsService {
       {
         id: 2,
         name: 'Product 2',
-        type: 1,
+        type: 2,
         category: 'Category Two',
-        isSub: true,
+        isSub: false,
         refId: 298372,
         password: 'Cold-0912',
         dFeesP: 2,
@@ -52,9 +52,9 @@ export class ProductsService {
       {
         id: 4,
         name: 'Product 4',
-        type: 1,
+        type: 2,
         category: 'Category Two',
-        isSub: true,
+        isSub: false,
         refId: 298372,
         password: 'Cold-0912',
         dFeesP: 2,
