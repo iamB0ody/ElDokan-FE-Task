@@ -8,7 +8,7 @@ import { Product } from 'src/app/modules/products/models/product.model';
 export class ProductsService {
   productsList: Product[] = [];
   products = new BehaviorSubject<Product[] | null>(null);
-  product = new Subject<Product>();
+  product = new Subject<Product | null>();
 
   constructor() {
     this.initProducts()
@@ -84,8 +84,12 @@ export class ProductsService {
     return this.products.asObservable();
   }
 
-  setProduct(product: Product) {
+  setProduct(product: Product | null) {
     this.product.next(product);
+  }
+
+  resetProduct() {
+    this.product.next(null);
   }
 
   getProduct() {

@@ -4,7 +4,7 @@ import { Product } from 'src/app/modules/products/models/product.model';
 import { ProductsService } from './../../../../shared/services/products.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-edit-product',
@@ -13,12 +13,13 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class AddEditProductComponent implements OnInit {
   isEdit!: boolean;
-  product!: Product;
+  product!: Product | null;
   form!: FormGroup;
 
   constructor(
     private productsService: ProductsService,
     private route: ActivatedRoute,
+    private router: Router,
     private modalService: ModalService,
     private toastService: ToastService
   ) {}
@@ -106,7 +107,7 @@ export class AddEditProductComponent implements OnInit {
             // Handle save
             this.toastService.show('Product deleted successfully', {
               // classname: 'bg-success text-light',
-              delay: 200000,
+              delay: 2000,
               autohide: true,
               headertext: '',
               icon: 'success'
@@ -122,7 +123,7 @@ export class AddEditProductComponent implements OnInit {
       .open(
         { size: 'lg', centered: true, fullscreen: true },
         {
-          title: `Delete "${this.product.name}"?`,
+          title: `Delete "${this.product?.name}"?`,
           desc: "Are you sure you want to delete product? Once deleted, you won't be able to access it again.",
           btns: [
             {
@@ -143,7 +144,7 @@ export class AddEditProductComponent implements OnInit {
             // Handle Delete
             this.toastService.show('Product deleted successfully', {
               // classname: 'bg-success text-light',
-              delay: 200000,
+              delay: 2000,
               autohide: true,
               headertext: '',
               icon: 'success'
@@ -152,5 +153,12 @@ export class AddEditProductComponent implements OnInit {
         },
         (error) => {}
       );
+  }
+
+  cancel(){
+    this.product = null;
+    this.isEdit = false;
+    this.productsService.resetProduct()
+    // this.router.navigate(['/products'])
   }
 }

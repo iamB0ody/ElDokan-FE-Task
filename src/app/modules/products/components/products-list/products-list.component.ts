@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class ProductsListComponent implements OnInit {
   productsList!: Product[];
   tempProductsList!: Product[];
-  selectedProduct!: Product;
+  selectedProduct!: Product | null;
 
   constructor(
     private productsService: ProductsService,
@@ -55,14 +55,17 @@ export class ProductsListComponent implements OnInit {
 
   listenToProduct() {
     this.productsService.getProduct().subscribe((p) => {
-      if (p) {
-        this.setProduct(p);
-      }
+      this.setProduct(p);
     });
   }
 
-  setProduct(p: Product) {
+  setProduct(p: Product | null) {
     this.selectedProduct = p;
-    this.router.navigate(['/products/edit/' + p.id]);
+    if(p){
+      this.router.navigate(['/products/edit/' + p.id]);
+    }else {
+      this.router.navigate(['/products']);
+    }
+
   }
 }
