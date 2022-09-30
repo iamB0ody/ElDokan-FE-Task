@@ -1,0 +1,77 @@
+
+      <form>
+        <app-input
+          label="Product Name"
+          type="text"
+          placeholder="Product Name"
+        ></app-input>
+
+        <app-input
+          label="Product Type"
+          type="radio"
+          [options]="['type1', 'type2']"
+        ></app-input>
+
+        <app-input
+          label="Product Category"
+          type="text"
+          placeholder="Product Category"
+        >
+          <app-input
+            type="checkbox"
+            [options]="['This is a sub category']"
+            containerclasses="form-group margin-top-05"
+          ></app-input>
+        </app-input>
+
+        <div class="row">
+          <div class="col-sm-6">
+            <app-input
+              label="Reference ID"
+              hint="(Optional)"
+              type="number"
+              placeholder="Reference ID"
+            ></app-input>
+          </div>
+          <div class="col-sm-6">
+            <app-input
+              label="Password"
+              type="Password"
+              placeholder="Password"
+            ></app-input>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-6">
+            <app-input
+              label="Delivery Fees"
+              srOnly="EGP"
+              type="number"
+              placeholder="Delivery Fees"
+            ></app-input>
+          </div>
+          <div class="col-sm-6">
+            <app-input
+              label="Delivery Fees"
+              srOnly="%"
+              type="number"
+              placeholder="Delivery Fees"
+            ></app-input>
+          </div>
+        </div>
+
+        <div class="form-group submit-section">
+          <div class="row">
+            <div class="col-sm-6 text-left">
+              <button class="btn color-danger"  *ngIf="edit">Delete</button>
+            </div>
+            <div class="col-sm-6 text-right">
+              <button type="reset" class="btn">Cancel</button>
+              <button type="submit" class="btn btn-primary">
+                Save
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
