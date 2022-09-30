@@ -31,16 +31,26 @@
     </div>
   </ng-container>
   <!-- srOnly -->
-  <!-- checkBox -->
-  <ng-container *ngIf="type === 'radio' || type === 'checkbox'">
-    <label class="input-checkbox" *ngFor="let option of options">
-      {{option}}
-      <input [formControl]="fc" [type]="type" [name]="label">
+  <!-- checkbox -->
+  <ng-container *ngIf="type === 'checkbox'">
+    <label class="custom-input-container" *ngFor="let option of options">
+      {{option.label}}
+      <input type="checkbox" [formControl]="fc" [name]="label | removeSpaces">
       <span class="checkmark"></span>
     </label>
   </ng-container>
+  <!-- checkbox -->
 
-  <!-- checkBox -->
+  <!-- radio -->
+  <ng-container *ngIf="type === 'radio'">
+    <label class="custom-input-container" *ngFor="let option of options">
+      {{option.label}}
+      <input type="radio" [formControl]="fc" [value]="option.value" [name]="label | removeSpaces">
+      <input type="radio" [formControl]="fc" [value]="option.value" [name]="label | removeSpaces">
+      <span class="checkmark"></span>
+    </label>
+  </ng-container>
+  <!-- radio -->
   <ng-content></ng-content>
 
 </div>

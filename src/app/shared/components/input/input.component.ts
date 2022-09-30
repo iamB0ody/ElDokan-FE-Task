@@ -15,7 +15,7 @@ export class InputComponent implements OnInit {
   @Input() containerclasses: string = 'form-group';
   @Input() ids!: string;
   @Input() srOnly!: string;
-  @Input() options!: string[];
+  @Input() options!: { label: string; value?: any }[];
   @Input() fc!: FormControl;
 
   constructor() {}

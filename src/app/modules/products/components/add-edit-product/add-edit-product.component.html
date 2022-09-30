@@ -11,7 +11,13 @@
     label="Product Type"
     ids="Product Type"
     type="radio"
-    [options]="['type1', 'type2']"
+    [options]="[{
+      label: 'type1',
+      value: 1
+    },{
+      label: 'type2',
+      value: 2
+    }]"
     [fc]="getFormControl('type')"
   ></app-input>
 
@@ -24,7 +30,7 @@
   >
     <app-input
       type="checkbox"
-      [options]="['This is a sub category']"
+      [options]="[{label: 'This is a sub category'}]"
       containerclasses="form-group margin-top-05"
       [fc]="getFormControl('isSub')"
     ></app-input>
