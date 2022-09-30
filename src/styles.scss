@@ -1,25 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
 
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;1,300&display=swap");
+
+* {
+  font-family: "Poppins", sans-serif !important;
+}
 
 /* change the colors */
-$primary: #00BCB4;
+$primary: #00bcb4;
 
 :root {
-  --main-color: #00BCB4;
+  --main-color: #00bcb4;
 }
 
 @import "bootstrap";
-
 
 .margin-top-05 {
   margin-top: 0.5rem;
 }
 
-
 body {
-    padding-top: 90px;
-    background-color: #F6F7FB;
-    color: #3D3D3D;
+  padding-top: 90px;
+  background-color: #f6f7fb;
+  color: #3d3d3d;
 }
 
 .btn-primary {
@@ -27,5 +30,8 @@ body {
 }
 
 .color-danger {
-  color: #C40000;
+  color: #c40000;
 }
+
+/* Importing Bootstrap SCSS file. */
+@import "~bootstrap/scss/bootstrap";
