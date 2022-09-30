@@ -1,0 +1,28 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">{{ options.title }}</h4>
+  <button type="button" class="btn-close" aria-label="Close"></button>
+</div>
+<div class="modal-body">
+  <form>
+    <div class="row">
+      <div class="col-sm-12">
+        <p>{{ options.desc }}</p>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+
+  <button type="button" [class]="'btn ' + btn.class"  *ngFor="let btn of options.btns" (click)="btn.fn == 'ok' ? ok() : close()">
+    {{btn.name}}
+  </button>
+
+
+<!--
+  <button type="button" class="btn" *ngIf="options.discard" (click)="close()">
+    Discard
+  </button>
+  <button type="button" class="btn btn-primary" *ngIf="options.save"  (click)="save()">
+    Save
+  </button> -->
+</div>

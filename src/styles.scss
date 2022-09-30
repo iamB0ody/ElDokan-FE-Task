@@ -25,6 +25,11 @@ body {
   color: #3d3d3d;
 }
 
+.btn {
+  width: 100px;
+  height: 50px;
+}
+
 .btn-primary {
   color: white;
 }
@@ -32,6 +37,33 @@ body {
 .color-danger {
   color: #c40000 !important;
 }
+
+.modal-backdrop {
+  z-index: 99 !important;
+}
+
+.modal-content {
+  box-shadow: 0px 3px 6px #00000029;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+
+
+.btn-close {
+  background-image: url(./assets/icons/close.svg);
+  width: 20px;
+  height: 20px;
+  border: 0;
+  background-color: transparent;
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  right: 0;
+  padding: 0 15px;
+}
+
+
 
 /* Importing Bootstrap SCSS file. */
 @import "~bootstrap/scss/bootstrap";
