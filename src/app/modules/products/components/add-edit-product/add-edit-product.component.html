@@ -1,6 +1,7 @@
 <form [formGroup]="form" *ngIf="form">
   <app-input
     label="Product Name"
+    ids="Product Name"
     type="text"
     placeholder="Product Name"
     [fc]="getFormControl('name')"
@@ -8,6 +9,7 @@
 
   <app-input
     label="Product Type"
+    ids="Product Type"
     type="radio"
     [options]="['type1', 'type2']"
     [fc]="getFormControl('type')"
@@ -15,6 +17,7 @@
 
   <app-input
     label="Product Category"
+    ids="Product Category"
     type="text"
     placeholder="Product Category"
     [fc]="getFormControl('category')"
@@ -31,6 +34,7 @@
     <div class="col-sm-6">
       <app-input
         label="Reference ID"
+        ids="Reference ID"
         hint="(Optional)"
         type="number"
         placeholder="Reference ID"
@@ -40,6 +44,7 @@
     <div class="col-sm-6">
       <app-input
         label="Password"
+        ids="Password"
         type="Password"
         placeholder="Password"
         [fc]="getFormControl('password')"
@@ -51,6 +56,7 @@
     <div class="col-sm-6">
       <app-input
         label="Delivery Fees"
+        ids="Delivery Fees1"
         srOnly="EGP"
         type="number"
         placeholder="Delivery Fees"
@@ -60,6 +66,7 @@
     <div class="col-sm-6">
       <app-input
         label="Delivery Fees"
+        ids="Delivery Fees2"
         srOnly="%"
         type="number"
         placeholder="Delivery Fees"
@@ -71,11 +78,15 @@
   <div class="form-group submit-section">
     <div class="row">
       <div class="col-sm-6 text-left">
-        <button class="btn color-danger" (click)="delete()" *ngIf="isEdit">Delete</button>
+        <button class="btn color-danger" (click)="delete()" *ngIf="isEdit">
+          Delete
+        </button>
       </div>
       <div class="col-sm-6 text-right">
         <button type="reset" class="btn">Cancel</button>
-        <button type="submit" class="btn btn-primary" (click)="save()">Save</button>
+        <button type="submit" class="btn btn-primary" (click)="save()">
+          Save
+        </button>
       </div>
     </div>
   </div>

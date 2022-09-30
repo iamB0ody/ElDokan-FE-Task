@@ -1,6 +1,6 @@
 <div [class]="containerclasses">
   <!-- label -->
-  <label *ngIf="label" class="main-label" [for]="label + '-id'"
+  <label *ngIf="label" class="main-label" [for]="label + '-id' | removeSpaces"
     >{{ label }} <small>{{ hint }}</small></label
   >
   <!-- label -->
@@ -9,14 +9,14 @@
     [type]="type"
     [placeholder]="placeholder"
     [class]="classes"
-    [id]="label + '-id'"
+    [id]="ids + '-id' | removeSpaces"
     autocomplete="off"
   />
   </ng-container>
 
   <!-- srOnly -->
   <ng-container  *ngIf="srOnly">
-    <label class="sr-only" for="label + '-id'">{{ srOnly }}</label>
+    <label class="sr-only" for="label + '-id' | removeSpaces">{{ srOnly }}</label>
     <div class="input-group mb-2">
       <div class="input-group-prepend">
         <div class="input-group-text">{{ srOnly }}</div>
@@ -25,7 +25,7 @@
         [type]="type"
         [placeholder]="placeholder"
         [class]="classes"
-        [id]="label + '-id'"
+        [id]="ids + '-id' | removeSpaces"
         autocomplete="off"
       />
     </div>

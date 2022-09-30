@@ -36,10 +36,10 @@ export class AddEditProductComponent implements OnInit {
       type: new FormControl(0, [Validators.required]),
       category: new FormControl('', [Validators.required]),
       isSub: new FormControl(false, [Validators.required]),
-      refId: new FormControl(false, [Validators.required]),
-      password: new FormControl(false, [Validators.required]),
-      dFeesP: new FormControl(false, [Validators.required]),
-      dFeesC: new FormControl(false, [Validators.required]),
+      refId: new FormControl('', [Validators.required]),
+      password: new FormControl('', [Validators.required]),
+      dFeesP: new FormControl('', [Validators.required]),
+      dFeesC: new FormControl('', [Validators.required]),
     });
   }
 
