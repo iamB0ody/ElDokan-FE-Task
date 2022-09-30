@@ -71,11 +71,11 @@
   <div class="form-group submit-section">
     <div class="row">
       <div class="col-sm-6 text-left">
-        <button class="btn color-danger" *ngIf="isEdit">Delete</button>
+        <button class="btn color-danger" (click)="delete()" *ngIf="isEdit">Delete</button>
       </div>
       <div class="col-sm-6 text-right">
         <button type="reset" class="btn">Cancel</button>
-        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="submit" class="btn btn-primary" (click)="save()">Save</button>
       </div>
     </div>
   </div>

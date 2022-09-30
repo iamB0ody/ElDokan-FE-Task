@@ -1,3 +1,5 @@
+import { ToastService } from './../../../../shared/services/toast.service';
+import { ModalService } from './../../../../shared/services/modal.service';
 import { Product } from 'src/app/modules/products/models/product.model';
 import { ProductsService } from './../../../../shared/services/products.service';
 import { Component, OnInit } from '@angular/core';
@@ -16,7 +18,9 @@ export class AddEditProductComponent implements OnInit {
 
   constructor(
     private productsService: ProductsService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private modalService: ModalService,
+    private toastService: ToastService
   ) {}
 
   ngOnInit(): void {
@@ -74,5 +78,79 @@ export class AddEditProductComponent implements OnInit {
     this.product = product;
     this.isEdit = true;
     this.form.patchValue(this.product);
+  }
+
+  save() {
+    this.modalService
+      .open(
+        { size: 'lg', centered: true, fullscreen: true },
+        {
+          title: 'Save changes?',
+          desc: 'Are you sure you want to save changes made?',
+          btns: [
+            {
+              name: 'Discard',
+              fn: 'close',
+            },
+            {
+              name: 'Save',
+              class: 'btn-primary',
+              fn: 'ok',
+            },
+          ],
+        }
+      )
+      .result.then(
+        (close) => {
+          if (close) {
+            // Handle save
+            this.toastService.show('Product deleted successfully', {
+              // classname: 'bg-success text-light',
+              delay: 200000,
+              autohide: true,
+              headertext: '',
+              icon: 'success'
+            });
+          }
+        },
+        (error) => {}
+      );
+  }
+
+  delete() {
+    this.modalService
+      .open(
+        { size: 'lg', centered: true, fullscreen: true },
+        {
+          title: `Delete "${this.product.name}"?`,
+          desc: "Are you sure you want to delete product? Once deleted, you won't be able to access it again.",
+          btns: [
+            {
+              name: 'Discard',
+              fn: 'close',
+            },
+            {
+              name: 'Delete',
+              class: 'btn-danger',
+              fn: 'ok',
+            },
+          ],
+        }
+      )
+      .result.then(
+        (close) => {
+          if (close) {
+            // Handle Delete
+            this.toastService.show('Product deleted successfully', {
+              // classname: 'bg-success text-light',
+              delay: 200000,
+              autohide: true,
+              headertext: '',
+              icon: 'success'
+            });
+          }
+        },
+        (error) => {}
+      );
   }
 }
